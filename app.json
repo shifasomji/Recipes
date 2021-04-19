@@ -1,0 +1,12 @@
+{
+  "name": "Recipes",
+  "displayName": "Recipes",
+  "expo": {
+    "name": "Recipes",
+    "slug": "Recipes",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
