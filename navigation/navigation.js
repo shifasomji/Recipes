@@ -42,7 +42,7 @@ function MyTabs() {
                 <MaterialCommunityIcons
                 name="receipt"
                 color={color}
-                size={size}
+                size={40}
                 />
             ),
             }}
@@ -56,7 +56,7 @@ function MyTabs() {
                 <MaterialCommunityIcons
                 name="food"
                 color={color}
-                size={size}
+                size={40}
                 /> // Default color and size: white and 20
             ),
             }}
