@@ -1,10 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert, Button } from 'react-native';
+
+import {
+  APPBACKGROUNDCOLOR,
+  APPTEXTRED,
+} from "../style/constants";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Button
+        title="Upload Receipt from Camera"
+        onPress={() => Alert.alert('Upload your receipt from camera!')}
+      />
+
+      <Button
+        title="Upload Receipt from Gallery"
+        onPress={() => Alert.alert('Upload your receipt from photo gallery!')}
+      />
     </View>
   );
 }
