@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ReceiptScreen from "../screens/receipt";
 import RecipeScreen from "../screens/recipe";
 import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import {
     APPBACKGROUNDCOLOR,
@@ -19,12 +20,12 @@ export default function Navigation() {
   );
 }
 
-const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 // Add more screens as necessary
 function MyTabs() {
     return (
-        <Tab.Navigator
+        <Drawer.Navigator
         initialRoutename="Receipt" 
         tabBarOptions={{
             activeTintColor: APPTEXTRED,
@@ -33,7 +34,7 @@ function MyTabs() {
             style: {borderTopWidth: 0}
         }}
         >
-        <Tab.Screen
+        <Drawer.Screen
             name="Receipt"
             component={ReceiptScreen}
             options={{
@@ -61,6 +62,8 @@ function MyTabs() {
             ),
             }}
         />
-        </Tab.Navigator>
+        </Drawer.Navigator>
     );
 }
+
+// export default MyTabs;
