@@ -3,7 +3,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { APPBACKGROUNDCOLOR, APPTEXTWHITE } from "../style/constants";
 
 import Login from "../screens/login";
-import SignUp from "../screens//signup";
+import SignUp from "../screens/signup";
 
 /* stackNavigation.js
  * stack navigator for not signed in user
