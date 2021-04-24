@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ReceiptScreen from "../screens/receipt";
 import RecipeScreen from "../screens/recipe";
+import InventoryScreen from "../screens/inventory";
 import { NavigationContainer } from "@react-navigation/native";
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import {
     APPBACKGROUNDCOLOR,
-    APPTEXTRED,
+    APPTEXTBLUE,
 } from "../style/constants";
 
 
@@ -20,21 +20,21 @@ export default function Navigation() {
   );
 }
 
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 
 // Add more screens as necessary
 function MyTabs() {
     return (
-        <Drawer.Navigator
+        <Tab.Navigator
         initialRoutename="Receipt" 
         tabBarOptions={{
-            activeTintColor: APPTEXTRED,
+            activeTintColor: APPTEXTBLUE,
             activeBackgroundColor: APPBACKGROUNDCOLOR,
             inactiveBackgroundColor: APPBACKGROUNDCOLOR,
             style: {borderTopWidth: 0}
         }}
         >
-        <Drawer.Screen
+        <Tab.Screen
             name="Receipt"
             component={ReceiptScreen}
             options={{
@@ -49,7 +49,21 @@ function MyTabs() {
             }}
         />
         <Tab.Screen
-            name="Recipe"
+            name="Inventory"
+            component={InventoryScreen}
+            options={{
+            tabBarLabel: "Inventory",
+            tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons
+                name="basket-fill"
+                color={color}
+                size={40}
+                />
+            ),
+            }}
+        />
+        <Tab.Screen
+            name="Recipes"
             component={RecipeScreen}
             options={{
             tabBarLabel: "Recipes",
@@ -62,8 +76,6 @@ function MyTabs() {
             ),
             }}
         />
-        </Drawer.Navigator>
+        </Tab.Navigator>
     );
 }
-
-// export default MyTabs;
