@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Alert, Button } from 'react-native';
 
 import {
-  APPBACKGROUNDCOLOR,
   APPTEXTRED,
+  APPINPUTVIEW
 } from "../style/constants";
 
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
       <Button
         title="Upload Receipt from Camera"
         onPress={() => Alert.alert('Upload your receipt from camera!')}
+        color={APPINPUTVIEW}
       />
 
       <Button

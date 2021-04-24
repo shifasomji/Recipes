@@ -9,6 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import {
     APPBACKGROUNDCOLOR,
     APPTEXTBLUE,
+    APPINPUTVIEW
 } from "../style/constants";
 
 
@@ -28,7 +29,7 @@ function MyTabs() {
         <Tab.Navigator
         initialRoutename="Receipt" 
         tabBarOptions={{
-            activeTintColor: APPTEXTBLUE,
+            activeTintColor: APPINPUTVIEW,
             activeBackgroundColor: APPBACKGROUNDCOLOR,
             inactiveBackgroundColor: APPBACKGROUNDCOLOR,
             style: {borderTopWidth: 0}
