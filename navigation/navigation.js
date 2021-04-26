@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ReceiptScreen from "../screens/receipt";
 import RecipeScreen from "../screens/recipe";
 import InventoryScreen from "../screens/inventory";
+import LoginScreen from "../screens/login";
 import { NavigationContainer } from "@react-navigation/native";
 
 import {
@@ -27,7 +28,7 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
     return (
         <Tab.Navigator
-        initialRoutename="Receipt" 
+        initialRoutename="Login" 
         tabBarOptions={{
             activeTintColor: APPINPUTVIEW,
             activeBackgroundColor: APPBACKGROUNDCOLOR,
@@ -36,15 +37,30 @@ function MyTabs() {
         }}
         >
         <Tab.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{
+            tabBarLabel: "Login",
+            tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                name="profile"
+                color={color}
+                size={35}
+                />
+            ),
+            tabBarVisible:false,
+            }}
+        />    
+        <Tab.Screen
             name="Receipt"
             component={ReceiptScreen}
             options={{
             tabBarLabel: "Receipt",
-            tabBarIcon: ({ color, size }) => (
+            tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons
                 name="receipt"
                 color={color}
-                size={40}
+                size={35}
                 />
             ),
             }}
@@ -54,11 +70,11 @@ function MyTabs() {
             component={InventoryScreen}
             options={{
             tabBarLabel: "Inventory",
-            tabBarIcon: ({ color, size }) => (
+            tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons
                 name="basket-fill"
                 color={color}
-                size={40}
+                size={35}
                 />
             ),
             }}
@@ -68,12 +84,12 @@ function MyTabs() {
             component={RecipeScreen}
             options={{
             tabBarLabel: "Recipes",
-            tabBarIcon: ({ color, size }) => (
+            tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons
                 name="food"
                 color={color}
-                size={40}
-                /> // Default color and size: white and 20
+                size={35}
+                /> 
             ),
             }}
         />
