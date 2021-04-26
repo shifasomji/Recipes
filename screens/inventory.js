@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Alert, Button } from 'react-native';
 
 import {
   APPBACKGROUNDCOLOR,
-  APPTEXTRED,
+  APPINPUTVIEW,
 } from "../style/constants";
 
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
       <Button
         title="Show Inventory"
         onPress={() => Alert.alert('Upload your receipt from camera!')}
+        color={APPINPUTVIEW}
       />
     </View>
   );
