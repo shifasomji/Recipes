@@ -15,6 +15,24 @@ export default function App() {
       />
 
       <Button
+        title="Select Diet"
+        onPress={() => Alert.alert('Diet')}
+        color={APPINPUTVIEW}
+      />
+
+      <Button
+        title="Select ingredients to exclude from today's meal"
+        onPress={() => Alert.alert('Exclude')}
+        color={APPINPUTVIEW}
+      />
+
+      <Button
+        title="Select allergy causing ingredients"
+        onPress={() => Alert.alert('Intolerances')}
+        color={APPINPUTVIEW}
+      />
+
+      <Button
         title="Find Recipe"
         onPress={() => Alert.alert('Recipes will be displayed')}
         color={APPINPUTVIEW}

@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import SwitchNavigator from "./navigation/switchNavigation";
+import Navigation from "./navigation/navigation";
 
-export default function App() {
-  return (
-      <SwitchNavigator />
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <Navigation />
+    );
+  }
 }
 
 const styles = StyleSheet.create({

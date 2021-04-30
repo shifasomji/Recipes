@@ -38,18 +38,10 @@ export default class App extends React.Component {
             title="Upload Receipt from Gallery" 
             onPress={this.handleChoosePhoto}
             color={APPINPUTVIEW} />
-        </View>
 
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          {photo && (
-            <Image
-              source={{ uri: photo.uri }}
-              style={{ width: 300, height: 300 }}
-            />
-          )}
           <Button 
-            title="Upload Receipt from Camera" 
-            onPress={this.handleChoosePhoto}
+            title="Verify Ingredients from Receipt" 
+            onPress={() => Alert.alert('Verify')}
             color={APPINPUTVIEW} />
         </View>
       </View>
