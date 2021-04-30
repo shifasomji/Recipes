@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ReceiptScreen from "../screens/receipt";
 import RecipeScreen from "../screens/recipe";
 import InventoryScreen from "../screens/inventory";
-import LoginScreen from "../screens/login";
+import SignupScreen from "../screens/signup";
 import { NavigationContainer } from "@react-navigation/native";
 
 import {
@@ -28,29 +28,14 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
     return (
         <Tab.Navigator
-        initialRoutename="Login" 
+        initialRoutename="Signup" 
         tabBarOptions={{
             activeTintColor: APPINPUTVIEW,
             activeBackgroundColor: APPBACKGROUNDCOLOR,
             inactiveBackgroundColor: APPBACKGROUNDCOLOR,
             style: {borderTopWidth: 0}
         }}
-        >
-        <Tab.Screen
-            name="Login"
-            component={LoginScreen}
-            options={{
-            tabBarLabel: "Login",
-            tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons
-                name="profile"
-                color={color}
-                size={35}
-                />
-            ),
-            tabBarVisible:false,
-            }}
-        />    
+        >   
         <Tab.Screen
             name="Receipt"
             component={ReceiptScreen}
@@ -93,6 +78,21 @@ function MyTabs() {
             ),
             }}
         />
+        <Tab.Screen
+            name="Signup"
+            component={SignupScreen}
+            options={{
+            tabBarLabel: "Sign Out",
+            tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                name="account-box"
+                color={color}
+                size={35}
+                />
+            ),
+            tabBarVisible:false,
+            }}
+        /> 
         </Tab.Navigator>
     );
 }
