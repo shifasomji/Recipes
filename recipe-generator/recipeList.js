@@ -2,8 +2,6 @@
 import { RecipeListItem } from RecipeListItem;
 
 class RecipeList {
-  recipes;
-  listjson;
   /**
    * Creates an array containing the recipeListItem
    */

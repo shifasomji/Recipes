@@ -2,21 +2,29 @@
  * Creates a preference data object that stores all the information needed to call Spoonacular get Recipes Complex API call.
  * Parses the information from the preferences data object 
  * 
- * Note: The set of values for diet and intolerances are fixed!
+ * Note: The possible values for diet and intolerances are determined by what acceptable values Spoonacular accepts for the diet and intolerances parameters.
+ * 
+ * Diet corresponds to the user's preferred diet.
+ * For release 1.0, we will be reducing the diets the user may select. They may select one from the following set: {pescetarian, "vegetarian", "vegan", "paleo"}. These will be the only values the user may select from the user interactive interface. If the user does not have any particular diet, the user interactive interface will provide an empty string as the diet preference. 
+ * 
+ * Intolerances corresponds to any allergies or food sensitivities the user may have.
+ * For release 1.0, the user may select multiple values from the following set:
+ * {"dairy", "egg", "gluten", "peanut", "sesame", "seafood", "shellfish", "soy", "sulfite", "tree nut", "wheat"}. If the user does not have any intolerances, the user interactive interface will provide an empty string as the diet preference.
  * 
  */
 class PreferenceObject {
   // values for intolerances and diets
-  possDiets = ["pescetarian", "lacto vegetarian", "ovo vegetarian", "vegan", "paleo", "primal", "vegetarian"];
-  allergies = ["dairy", "egg", "gluten", "peanut", "sesame", "seafood", "shellfish", "soy", "sulfite", "tree nut", "wheat"];
+  // to do: move this to a user interactive interface component. 
+  static possDiets = ["pescetarian", "lacto vegetarian", "ovo vegetarian", "vegan", "paleo", "primal", "vegetarian"];
+  static allergies = ["dairy", "egg", "gluten", "peanut", "sesame", "seafood", "shellfish", "soy", "sulfite", "tree nut", "wheat"];
+  
   /**
   * 
-  * @param {object} preferences : preferences data object from shifa
+  * @param {object} uiPreferences : preferences data object from shifa
   */
-
-  constructor(uipreferences) {
+  constructor(uiPreferences) {
     // store the preferences data object from ui
-    this.preferences = uipreferences;
+    this.preferences = uiPreferences;
     // required parameters for the get recipes complex api call (default values)
     this.limitLicense = false;
     this.offset = 0; // how many recipes to exclude
@@ -26,12 +34,18 @@ class PreferenceObject {
     this.includeIngredients; // preferences data object at index 0
     this.excludeIngredients; // special dietary restrictions (ex: no pork, pork should be listed here)
     this.intolerances; // allergies (shifa needs to add this to the preferences object)
+    this.errorBool = false;
+    this.errorMessage;
+    this.parse();
   }
 
   /**
-    * This method sets all the parameters
+    * This method calls all the set parameters methods. 
     * 
-    * throws an error if something wrong happens with parsing
+    * If any of the set methods throws an error, the errorBool will be set to true and the errorMessage will be set to "Something went wrong, please select your preferences again"
+    * 
+    * @param None
+    * @returns None
     * 
     */
   parse() {
@@ -41,69 +55,42 @@ class PreferenceObject {
       this.setDiet();
       this.setExcludeIngredients();
     } catch (err) {
-      console.log(err);
+      this.errorBool = true;
+      this.errorMessage = "Something went wrong, please select your preferences again.";
     }
   }
 
   /**
-   * This method converts the array of recipes at index 0 of the preferences data object to a string
-   *
-   * may be a slow approach but
-   * iterate through preferences[0]
-   * add element to array
-   * join array into a ingredient string
-   * set includeIngredients to ingredient string
-   *
-   * set that includeIngredients to the ingredient string
+   * Sets the value of the preferred ingredients
+   * 
+   * This method converts the array of ingredients at index 0 of the preferences data object to a stringof ingredients to include separated by a comma and a space.
    *
    *
    * @param None
    * @returns None
    */
   setIncludeIngredients() {
-    ingredientStr = "";
-    var len = preferences[0].length;
-    var ingredients_arr = preferences[0];
-    for (var i = 0; i < len; i++) {
-      ingredientStr += ingredients_arr[i];
-      if (i != len - 1) {
-        ingredientStr += ", ";
-      }
-    }
-    this.includeIngredients = ingredientStr;
+    this.includeIngredients = preferences[0].join(", ");
   }
 
   /**
-   * iterate through preferences[1]
-   * If element not in possDiets or allergies is in preferences[1]
-   * add the element to an array
+   * Sets the value of ingredients to exclude.
    *
-   * convert array to a string
-   * set intolerances to that string
-   *
+   * This method converts the array of ingredients at index 1 of the preferences data object to a string of ingredients to exclude separated by a comma and a space.
+   * 
    * @param None
    * @returns None
    */
   setExcludeIngredients() {
-    avoidStr = "";
-    var len = preferences[1].length;
-    var ingredients_arr = this.preferences[1];
-    for (var i = 0; i < len; i++) {
-      avoidStr += ingredients_arr[i];
-      if (i != len - 1) {
-        avoidStr += ", ";
-      }
-    }
-    this.excludeIngredients = avoidStr;
+    this.excludeIngredients = preferences[1].join(", ");
   }
 
   /**
-   * iterate through preferences[1]
-   * if dietary restriction is a possible diet
-   * add that to an array
-   * join the array as a diet string
-   *
-   * set diet to the diet string
+   * Sets the value of the diet parameter.
+   * 
+   * User may select one diet, the diet parameter will be set to whatever the fourth element is. 
+   * The diet value either be a valid diet string or an empty string.
+   * 
    * @param None
    * @returns None
    */
@@ -112,14 +99,12 @@ class PreferenceObject {
   }
 
   /**
-   * iterate through preferences[1]
-   * if dietary restriction is an allergy
-   * add to an array
-   * join the array as intolerances string
+   * Sets the intolerances parameter
    *
-   * set intolerances to the intolerances string
+   * This method converts the array of food sensitivities at index 2 of the preferences data object to a string of intolerances.
+   * 
    */
   setIntolerances() {
-    this.intolerances = preferences[2];
+    this.intolerances = preferences[2].join(", ");
   }
 }

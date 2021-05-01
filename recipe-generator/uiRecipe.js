@@ -5,17 +5,6 @@ import Ingredient from './Ingredient';
  * The user interactive interface will be using information from this data object to display to the user
  */
 class uiRecipe {
-  spoonjson;
-  title;
-  ingredients;
-  recipeId;
-  vegetarian;
-  vegan;
-  glutenFree;
-  dairyFree;
-  image;
-  instruction;
-
   constructor(spoonRecipe) {
     this.spoonjson = spoonRecipe;
     this.title = spoonRecipe.title;
