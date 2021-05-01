@@ -5,23 +5,10 @@
  * Note: The set of values for diet and intolerances are fixed!
  * 
  */
-class preferenceObject {
+class PreferenceObject {
   // values for intolerances and diets
   possDiets = ["pescetarian", "lacto vegetarian", "ovo vegetarian", "vegan", "paleo", "primal", "vegetarian"];
   allergies = ["dairy", "egg", "gluten", "peanut", "sesame", "seafood", "shellfish", "soy", "sulfite", "tree nut", "wheat"];
-
-  /**
-  * Properties of the PreferenceObj class
-  */
-  preferences;
-  limitLicense;
-  offset;
-  number;
-  diet;
-  includeIngredients;
-  excludeIngredients;
-  intolerances;
-
   /**
   * 
   * @param {object} preferences : preferences data object from shifa

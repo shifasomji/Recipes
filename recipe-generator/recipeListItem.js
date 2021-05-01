@@ -9,7 +9,7 @@
  * recipeList class.
  * 
  */
-class recipeListItem {
+class RecipeListItem {
   constructor(spoonListRecipe) {
     this.id = spoonListRecipe.id;
     this.usedCount = spoonListRecipe.usedIngredientCount;
@@ -31,3 +31,4 @@ class recipeListItem {
     this.clicked = true;
   }
 }
+

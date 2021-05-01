@@ -7,7 +7,7 @@ import { recipeListItem } from recipeListItem;
  * It will use the parser and the query class to request information from the spoonacular api.
  * 
  */
-class recipeGenerator {
+class RecipeGenerator {
   usrprefs;
   recipeId;
   recipes; // a list of recipeListItem objects
