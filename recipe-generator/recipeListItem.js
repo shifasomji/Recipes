@@ -21,14 +21,6 @@ class RecipeListItem {
     this.protein = spoonListRecipe.protein;
     this.fat = spoonListRecipe.fat;
     this.carbs = spoonListRecipe.carbs;
-    this.clicked = false;
-  }
-
-  /**
-   * The user has clicked the recipe
-   */
-  click() {
-    this.clicked = true;
   }
 }
 

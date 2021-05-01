@@ -113,7 +113,6 @@ class RecipeGenerator {
 
   /**
    * This method will parse the spoonacular api data into a data object that can be interpreted by the user interactive interface.
-   * @parameters {jsonfile} spoonRecipe
    * @returns {object} uiRecipe
    * 
    */
@@ -122,7 +121,7 @@ class RecipeGenerator {
     // iterate through the elements in the spoonacular recipe information jsonfile
     // parse and add the relevant information to the data object uiRecipe
     // return uiRecipe
-    uiRecipe = new uiRecipe(recipejson);
+    uiRecipe = new UiRecipe(recipejson);
 
     return uiRecipe;
   }

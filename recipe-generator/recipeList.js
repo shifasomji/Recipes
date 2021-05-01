@@ -9,11 +9,12 @@ class RecipeList {
     this.listjson = spoonList;
     this.results = spoonList.results;
     this.recipes = new Array();
+    this.populateRecipes();
   }
 
   /**
    * Adds all the recipeListItems to the recipes array.
-   * @params {jsonfile} spoonList  The spoonacular API jsonfile containing a list of recipes.
+   * @params None
    * @returns {null} Nothing is returned.
    */
   populateRecipes() {
