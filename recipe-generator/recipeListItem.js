@@ -1,4 +1,7 @@
-// This module represents a single element (recipe) in a recipeList. The recipeList class extends from this. This module can also just be replaced with an array with each index mapping to data about a recipe.
+/**
+ * This module represents a single element (recipe) in a recipeList. 
+ * 
+*/ 
 
 /**
  * An object representing an individual piece of recipe information in a list of other recipe items. This object will contain the data that will be displayed to the user and if the user is interested in gettinng more information about the recipe, they will click on it and the recipe generator will make a second request to the api for more information about the recipe. Once that is called, the clicked {boolean} will be set to true so that there will not be multiple calls to the api for the same recipeListItem if the user goes back and forth between recipes.
@@ -24,3 +27,4 @@ class RecipeListItem {
   }
 }
 
+export default RecipeListItem;

@@ -1,4 +1,9 @@
-// This module handles the conversion from Spoonacular jsonfile to a list of recipe objects.
+/** 
+ * This class handles the conversion from Spoonacular jsonfile to a list of recipe objects.
+ * 
+ * This class will be used in the RecipeGenerator class to store recipes from a Recipe List spoonacular request. It will be the type of the RecipeGenerator's recipes property.
+ * 
+ */
 import { RecipeListItem } from RecipeListItem;
 
 class RecipeList {
@@ -23,7 +28,7 @@ class RecipeList {
     //  add the recipe to the recipeList as a recipeListItem (parsing involved)
     // return the recipeList 
     for (var i = 0; i < this.results.length; i++) {
-      this.recipes.push(new recipeListItem(results[i]));
+      this.recipes.push(new RecipeListItem(results[i]));
     }
   }
 
@@ -36,3 +41,5 @@ class RecipeList {
     return this.recipes;
   }
 }
+
+export default RecipeList;

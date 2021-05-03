@@ -17,10 +17,10 @@ class PreferenceObject {
   // to do: move this to a user interactive interface component. 
   static possDiets = ["pescetarian", "lacto vegetarian", "ovo vegetarian", "vegan", "paleo", "primal", "vegetarian"];
   static allergies = ["dairy", "egg", "gluten", "peanut", "sesame", "seafood", "shellfish", "soy", "sulfite", "tree nut", "wheat"];
-  
+
   /**
   * 
-  * @param {object} uiPreferences : preferences data object from shifa
+  * @param {object} uiPreferences : a  preferences data object from shifa
   */
   constructor(uiPreferences) {
     // store the preferences data object from ui
@@ -108,3 +108,5 @@ class PreferenceObject {
     this.intolerances = preferences[2].join(", ");
   }
 }
+
+export default PreferenceObject;

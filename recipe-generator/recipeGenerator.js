@@ -1,4 +1,14 @@
-// This module is the main class of the component. It requests information from the Spoonacular API
+/**
+ * This module is the main class of the recipe-generator component. It requests information from the Spoonacular API
+ * 
+ * PreferenceObject is a class used to parse and store information from the user interactive interfaces preferences array. The preferences array is passed to the RecipeGenerator as a parameter in the constructor.
+ * 
+ * RecipeList is an array of RecipeListItem. It stores information from a recipe list query.
+ * 
+ * UiRecipe is a data object storing information about a requested recipe. It stores an array of ingredients, and their corresponding image, amounts, and units.
+ * 
+ */
+
 import { TouchableHighlightBase } from "react-native";
 import { PreferenceObject } from PreferenceObject;
 import { RecipeList } from RecipeList;
@@ -50,23 +60,27 @@ class RecipeGenerator {
     // parse the recipesList into an User interactive interface facing object 
     // return the parsed object.
     preferences = new PreferenceObject(this.uipreferences);
-    if (preferences.errorBool)
+    if (preferences.errorBool) {
+      // To Do: remove
+      // throw new UserException('Preferences Selection Error');
+      return preferences.errorMessage;
+    }
 
-      fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?ranking=2&number=5&offset=0&excludeIngredients=${preferences.excludeIngredients}&diet=${preferences.diet}&intolerances=${preferences.intolerances}&includeIngredients=${preferences.includeIngredients}`, {
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-key": "API-KEY",
-          "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
-        }
+    fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?ranking=2&number=5&offset=0&excludeIngredients=${preferences.excludeIngredients}&diet=${preferences.diet}&intolerances=${preferences.intolerances}&includeIngredients=${preferences.includeIngredients}`, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-key": "API-KEY",
+        "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+      }
+    })
+      .then(response => response.json())
+      .then((data) => {
+        // console.log(data);
+        this.listJson = data;
       })
-        .then(response => response.json())
-        .then((data) => {
-          // console.log(data);
-          this.listJson = data;
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      .catch(err => {
+        console.error(err);
+      });
 
     this.recipes = new RecipeList(this.listJson);
 
@@ -121,3 +135,5 @@ class RecipeGenerator {
   }
 
 }
+
+export default RecipeGenerator;

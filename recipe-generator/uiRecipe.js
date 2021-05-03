@@ -6,6 +6,7 @@ import Ingredient from './Ingredient';
  */
 class UiRecipe {
   constructor(spoonRecipe) {
+    // the information that ui recipe will display
     this.spoonjson = spoonRecipe;
     this.title = spoonRecipe.title;
     this.recipeId = spoonRecipe.id;
@@ -28,3 +29,5 @@ class UiRecipe {
     }
   }
 }
+
+export default UiRecipe;
