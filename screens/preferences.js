@@ -13,19 +13,7 @@ class preferences {
         this.intolerances = new Array();
     }
 
-    userPreferences(choosePreferences = true) {
-        /*
-            ask the user which ingredients they prefer to use for the recipe
-            user will be shown all ingredients currently in their inventory 
-            user selects a few preferred ingredients
-            store ingredients in a list
-            list will be compiled with other inputs in createPreferencesObject()
-            @param choosePreferences: bool variable indicating whether user has clicked "choose preferences" button
-            @output preferences: list of user's ingredient preferences
-        */
-
-        return this.includeIngredients;
-    }
+    // removed userPreferences function because it is accounted for in recipe.js
 
     userDietary(chooseDietary = true) {
         /*
@@ -45,7 +33,6 @@ class preferences {
 
         if (this.dietary == 0) {
             this.dietary++;
-            // ask user for dietary restrictions
         } else {
             return this.diet;
         }

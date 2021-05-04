@@ -100,7 +100,8 @@ const verifyDeducted = ({ name, quantity, unit }) => {
 
             {/* figure out correct syntax */ }
             <Text>
-                "Unit of Ingredient", unit 
+                Unit of Ingredient
+                {unit}
             </Text>
 
             <Button

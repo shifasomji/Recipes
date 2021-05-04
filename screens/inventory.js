@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Alert, Button } from 'react-native';
+// import { inventoryManager} from ""; // put path to stephanie's component
+// returns list of objects, each of which has name, quantity, category
 
 import {
   APPBACKGROUNDCOLOR,

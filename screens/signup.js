@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput, Alert } from 'react-native';
+import { View, Text, Button, TextInput } from 'react-native';
+import { APPTEXTRED } from "../style/constants";
 
 const navigationByCondition = (pass, confirmPass, navigation) => {
     if (pass == confirmPass) {
@@ -9,9 +10,9 @@ const navigationByCondition = (pass, confirmPass, navigation) => {
 
 const LoginScreen = ({ navigation }) => {
 
-    const [name, onChangeName] = React.useState(null);  
-    const [password, onChangePass] = React.useState(null);
-    const[confirmPass, onChangeConfirmPass] = React.useState(null);  
+    const [name, onChangeName] = useState(null);  
+    const [password, onChangePass] = useState(null);
+    const [confirmPass, onChangeConfirmPass] = useState(null);
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -42,6 +43,7 @@ const LoginScreen = ({ navigation }) => {
         <Button
             title="Signup"
             onPress={() => navigationByCondition(password, confirmPass, navigation)}
+            color={APPTEXTRED}
         />
         </View>
     );

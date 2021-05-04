@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import ReceiptScreen from "../screens/receipt";
-import RecipeScreen from "../screens/recipe";
-import InventoryScreen from "../screens/inventory";
-import SignupScreen from "../screens/signup";
+import ReceiptScreen from "../screens/Receipt";
+import RecipeScreen from "../screens/Recipe";
+import InventoryScreen from "../screens/Inventory";
+import SignupScreen from "../screens/Signup";
 import { NavigationContainer } from "@react-navigation/native";
 
 import {
