@@ -12,7 +12,7 @@
  * recipeList class.
  * 
  */
-export class RecipeListItem {
+class RecipeListItem {
   constructor(spoonListRecipe) {
     this.id = spoonListRecipe.id;
     this.usedCount = spoonListRecipe.usedIngredientCount;
@@ -20,10 +20,7 @@ export class RecipeListItem {
     this.title = spoonListRecipe.title;
     this.image = spoonListRecipe.image;
     this.imageType = spoonListRecipe.imageType;
-    this.calories = spoonListRecipe.calories;
-    this.protein = spoonListRecipe.protein;
-    this.fat = spoonListRecipe.fat;
-    this.carbs = spoonListRecipe.carbs;
   }
 }
 
+module.exports = RecipeListItem;

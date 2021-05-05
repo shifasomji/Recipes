@@ -4,15 +4,15 @@
  * This class will be used in the RecipeGenerator class to store recipes from a Recipe List spoonacular request. It will be the type of the RecipeGenerator's recipes property.
  * 
  */
-import { RecipeListItem } from './RecipeListItem.js';
+const RecipeListItem = require('./RecipeListItem.js');
 
-export class RecipeList {
+class RecipeList {
   /**
    * Creates an array containing the recipeListItem
    */
   constructor(spoonList) {
-    this.listjson = spoonList;
-    this.results = spoonList.results;
+    this.listJson = spoonList;
+    this.results = this.listJson.results;
     this.recipes = new Array();
     this.populateRecipes();
   }
@@ -28,7 +28,7 @@ export class RecipeList {
     //  add the recipe to the recipeList as a recipeListItem (parsing involved)
     // return the recipeList 
     for (var i = 0; i < this.results.length; i++) {
-      this.recipes.push(new RecipeListItem(results[i]));
+      this.recipes.push(new RecipeListItem(this.results[i]));
     }
   }
 
@@ -40,4 +40,18 @@ export class RecipeList {
   getRecipeList() {
     return this.recipes;
   }
+
+  /**
+   * returns a recipelistitem from the recipes array
+   * @param {number} index 
+   */
+  getRecipeItem(index) {
+
+  }
+
+  getRecipes() {
+    return this.recipes;
+  }
 }
+
+module.exports = RecipeList;
