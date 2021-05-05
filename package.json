@@ -36,11 +36,26 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "babel-jest": "~25.2.6",
-    "jest": "^25.2.7",
+    "jest": "^25.5.4",
     "react-test-renderer": "~16.13.1"
   },
   "jest": {
     "preset": "react-native"
   },
-  "private": true
+  "private": true,
+  "type": "module",
+  "name": "Recipes",
+  "description": "Repository for CS 181AA Project",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shifasomji/Recipes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shifasomji/Recipes/issues"
+  },
+  "homepage": "https://github.com/shifasomji/Recipes#readme"
 }

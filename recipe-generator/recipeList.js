@@ -4,9 +4,9 @@
  * This class will be used in the RecipeGenerator class to store recipes from a Recipe List spoonacular request. It will be the type of the RecipeGenerator's recipes property.
  * 
  */
-import { RecipeListItem } from RecipeListItem;
+import { RecipeListItem } from './RecipeListItem.js';
 
-class RecipeList {
+export class RecipeList {
   /**
    * Creates an array containing the recipeListItem
    */
@@ -41,5 +41,3 @@ class RecipeList {
     return this.recipes;
   }
 }
-
-export default RecipeList;

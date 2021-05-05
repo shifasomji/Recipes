@@ -12,7 +12,7 @@
  * {"dairy", "egg", "gluten", "peanut", "sesame", "seafood", "shellfish", "soy", "sulfite", "tree nut", "wheat"}. If the user does not have any intolerances, the user interactive interface will provide an empty string as the diet preference.
  * 
  */
-class PreferenceObject {
+export class PreferenceObject {
   // values for intolerances and diets
   // to do: move this to a user interactive interface component. 
   static possDiets = ["pescetarian", "lacto vegetarian", "ovo vegetarian", "vegan", "paleo", "primal", "vegetarian"];
@@ -70,7 +70,8 @@ class PreferenceObject {
    * @returns None
    */
   setIncludeIngredients() {
-    this.includeIngredients = preferences[0].join(", ");
+    var ingredArr = this.preferences[0]
+    this.includeIngredients = ingredArr.join(', ');
   }
 
   /**
@@ -82,7 +83,8 @@ class PreferenceObject {
    * @returns None
    */
   setExcludeIngredients() {
-    this.excludeIngredients = preferences[1].join(", ");
+    var ingredArr = this.preferences[1]
+    this.excludeIngredients = ingredArr.join(', ');
   }
 
   /**
@@ -95,7 +97,7 @@ class PreferenceObject {
    * @returns None
    */
   setDiet() {
-    this.diet = preferences[3];
+    this.diet = this.preferences[3][0];
   }
 
   /**
@@ -105,8 +107,7 @@ class PreferenceObject {
    * 
    */
   setIntolerances() {
-    this.intolerances = preferences[2].join(", ");
+    var intolerantArr = this.preferences[2];
+    this.intolerances = intolerantArr.join(', ');
   }
 }
-
-export default PreferenceObject;

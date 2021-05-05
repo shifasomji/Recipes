@@ -3,7 +3,7 @@
  * 
  * It is a data object that stores information of the ingredients needed for a recipe. It stores the name, image, amount, and the units of a ingredient.
  */
-class Ingredient {
+export class Ingredient {
   /**
    * spoonIngred is an element from the extendedIngredients array in the spoonacular json file retrieved from a recipe information query.
    * @param {data object from jsonfile} spoonIngred 
@@ -15,5 +15,3 @@ class Ingredient {
     this.unit = spoonIngred.unit;
   }
 }
-
-export default Ingredient;

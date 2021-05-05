@@ -1,10 +1,14 @@
-import Ingredient from './Ingredient';
+import Ingredient from './Ingredient.js';
 //This module is a data object containing the information of a user requested recipe
 
 /**
  * The user interactive interface will be using information from this data object to display to the user
  */
-class UiRecipe {
+export class UiRecipe {
+  /**
+   * 
+   * @param {jsonfile} spoonRecipe A jsonfile from spoonacular that stores information about the recipe requested by the user.
+   */
   constructor(spoonRecipe) {
     // the information that ui recipe will display
     this.spoonjson = spoonRecipe;
@@ -21,6 +25,9 @@ class UiRecipe {
     this.populateIngredients();
   }
 
+  /**
+   * 
+   */
   populateIngredients() {
     // iterate through the elements in the spoonacular recipe information jsonfile
     // parse and add the relevant information to the data object uiRecipe
@@ -29,5 +36,3 @@ class UiRecipe {
     }
   }
 }
-
-export default UiRecipe;
