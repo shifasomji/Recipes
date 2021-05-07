@@ -4,15 +4,14 @@ import RNPickerSelect from "react-native-picker-select";
 
 import {
   APPINPUTVIEW,
-  APPTEXTBLACK
 } from "../style/constants";
 
-export default function App() {
+export default function Recipe() {
 
-  const [ include, setInclude ] = useState("");
   const [ diet, setDiet ] = useState("");
-  const [ allergy, setAllergy ] = useState("");
+  const [ include, setInclude ] = useState("");
   const [ exclude, setExclude ] = useState("");
+  const [ allergy, setAllergy ] = useState("");
 
   return (
     <View style={styles.container}>
@@ -38,13 +37,13 @@ export default function App() {
       <Text>
           {include ?
             `Select ingredients to include` :
-              "Please select a ingredients to include"
+              "Please select ingredients to include"
           }
       </Text>
       <RNPickerSelect
           onValueChange={(include) => setInclude(include)}
           items={[
-
+            /* show all items from inventory */
           ]}
       />
 
@@ -56,10 +55,12 @@ export default function App() {
           }
       </Text>
       <RNPickerSelect
+          style={{width: 200, height: 14}}
           onValueChange={(exclude) => setExclude(exclude)}
           items={[
             { label: 'Chicken', value: 'C' },
             { label: 'Pork', value: 'P' },
+            /* show all items from inventory */
           ]}
       />
 
@@ -87,9 +88,15 @@ export default function App() {
           ]}
       />
 
+      <Text testID="diet">Diet: {diet} </Text>
+      <Text testID="include"> Include: {include} </Text>
+      <Text testID="exclude"> Exclude: {exclude} </Text>
+      <Text testID="allergy"> Allergy: {allergy} </Text>
+
       <Button
-        title="Find Recipe"
-        onPress={() => Alert.alert('Recipes will be displayed')}
+        title="Get Recipe Suggestions!"
+        testID="recipe suggestions"
+        onPress={() => Alert.alert('Recipes will be displayed')} /* call lucky's component */
         color={APPINPUTVIEW}
       />
     </View>

@@ -34,12 +34,13 @@ translateItem = (item) => {
 
 }
 
-const translateItemHelper = (changeName, changeQuantity, unit, category) => {
-    var translatedIngredient = {name: changeName, quantity: changeQuantity, unit: unit, category: category};
+const translateItemHelper = (changedName, changedQuantity, unit, category) => {
+    var translatedIngredient = {name: changedName, quantity: changedQuantity, unit: unit, category: category};
+    verifyReceipt(translatedIngredient);
     return translatedIngredient;
 }
 
-const updateInventory = ({ name, quantity, unit, category }) => {
+const updateInventory = () => {
 
     const [name, onChangeName] = useState(null);
     const [quantity, onChangeQuantity] = useState(null);
@@ -49,7 +50,7 @@ const updateInventory = ({ name, quantity, unit, category }) => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>
-                "Please verify the name and quantity of the ingredients from your receipt."
+                Please verify the name and quantity of the ingredients from your receipt.
             </Text>
 
             <TextInput
