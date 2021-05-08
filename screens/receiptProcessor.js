@@ -55,6 +55,7 @@ const updateInventory = () => {
 
             <TextInput
                 onChangeText={onChangeName}
+                testID="change name"
                 value={name}
                 placeholder="Name of Ingredient"
                 keyboardType="default"
@@ -62,13 +63,14 @@ const updateInventory = () => {
 
             <TextInput
                 onChangeText={onChangeQuantity}
+                testID="change quantity"
                 value={quantity}
                 placeholder="Quantity of Ingredient"
                 keyboardType="default"
             />
 
             { /* add units */ }
-            <Text>
+            <Text testID="set unit">
                 {unit ?
                   `Select the unit of this ingredient` :
                     "Please select a unit" 
@@ -89,7 +91,7 @@ const updateInventory = () => {
                 ]}
             />
 
-            <Text>
+            <Text testID="set category">
                 {category ?
                   `Select the category of this ingredient` :
                     "Please select a category"
@@ -110,6 +112,7 @@ const updateInventory = () => {
 
             <Button
                 title="Done"
+                testID="done"
                 onPress={() => translateItemHelper(onChangeName, onChangeQuantity, unit, category)}
             />
 

@@ -69,7 +69,7 @@ const verifyIngredientsHelper = (verifiedName, verifiedQuantity, unit) => {
     return displayError;
 }
 
-const verifyDeducted = ({ name, quantity, unit }) => {
+const verifyDeducted = () => {
 
     const [name, onChangeName] = useState(null);
     const [quantity, onChangeQuantity] = useState(null);
@@ -84,6 +84,7 @@ const verifyDeducted = ({ name, quantity, unit }) => {
 
             <TextInput
                 onChangeText={onChangeName}
+                testID="change ingredient name"
                 value={name}
                 placeholder="Name of Ingredient"
                 keyboardType="default"
@@ -91,6 +92,7 @@ const verifyDeducted = ({ name, quantity, unit }) => {
 
             <TextInput
                 onChangeText={onChangeQuantity}
+                testID="change ingredient quantity"
                 value={quantity}
                 placeholder="Quantity of Ingredient"
                 keyboardType="default"
@@ -98,6 +100,7 @@ const verifyDeducted = ({ name, quantity, unit }) => {
 
             <TextInput
                 onChangeText={onChangeUnit}
+                testID="change ingredient unit"
                 value={unit}
                 placeholder="Unit of Ingredient"
                 keyboardType="default"
@@ -105,6 +108,7 @@ const verifyDeducted = ({ name, quantity, unit }) => {
 
             <Button
                 title="Done"
+                testID="done"
                 onPress={() => verifyIngredientsHelper(onChangeName, onChangeQuantity, onChangeUnit)}
             />
 
