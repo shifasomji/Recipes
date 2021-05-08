@@ -1,7 +1,7 @@
 /*
 This new class will act like a data container for processed receipt
 data and will create items with properties:
-Description, Quantity, and Units 
+Description, Quantity, and Units
 */
 class thereceiptItem {
 
