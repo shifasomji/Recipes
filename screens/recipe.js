@@ -1,3 +1,5 @@
+// This module handles all interactions with the user and their recipes
+
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import RNPickerSelect from "react-native-picker-select";
@@ -17,7 +19,7 @@ export default function Recipe() {
     <View style={styles.container}>
 
       {/* select diet */ }
-      <Text>
+      <Text testID="select diet">
           {diet ?
             `Select your diet` :
               "Please select a diet"
@@ -25,6 +27,7 @@ export default function Recipe() {
       </Text>
       <RNPickerSelect
           onValueChange={(diet) => setDiet(diet)}
+          touchableWrapperProps={{ testID: "picker" }}
           items={[
             { label: 'Pescetarian', value: 'PES' },
             { label: 'Vegan', value: 'VEGA' },	
@@ -34,7 +37,7 @@ export default function Recipe() {
       />
 
       {/* select ingredients to include */ }
-      <Text>
+      <Text testID="include select">
           {include ?
             `Select ingredients to include` :
               "Please select ingredients to include"
@@ -48,7 +51,7 @@ export default function Recipe() {
       />
 
       {/* select ingredients to exclude */ }
-      <Text>
+      <Text testID="exclude select">
           {exclude ?
             `Select ingredients to exclude` :
               "Please select ingredients to exclude"
@@ -65,7 +68,7 @@ export default function Recipe() {
       />
 
       {/* select allergy causing ingredients */ }
-      <Text>
+      <Text testID="select allergy">
           {allergy ?
             `Select ingredients that cause allergies` :
               "Please select allergy causing ingredients"

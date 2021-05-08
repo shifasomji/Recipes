@@ -71,13 +71,21 @@ const updateInventory = () => {
             <Text>
                 {unit ?
                   `Select the unit of this ingredient` :
-                    "Please select a unit"
+                    "Please select a unit" 
                 }
             </Text>
             <RNPickerSelect
                 onValueChange={(unit) => setUnit(unit)}
                 items={[
-                  
+                    { label: 'kg', value: 'kg' },
+                    { label: 'g', value: 'g' },	
+                    { label: 'lb', value: 'lb' },
+                    { label: 'oz', value: 'oz' },
+                    { label: 'l', value: 'l' },
+                    { label: 'ml', value: 'ml' },	
+                    { label: 'fl oz', value: 'fl oz' },
+                    { label: 'qt', value: 'qt' },
+                    { label: 'gal', value: 'gal'}
                 ]}
             />
 
