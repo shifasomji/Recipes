@@ -254,23 +254,15 @@ describe("Test: Inventory-Manager", function() {
       it("Adding unrecognized, non-existent items with std/non-std units.", function() {
         var receiptItems = [];
         var receiptItem1 = {name: "Organic Tom. Basil Spag. Sauce", quantity: 14, unit: "oz"};
-        // var receiptItem2 = {name: "A-Pear Each Bartlett", quantity: 3, unit: "none"};
-        var receiptItem3 = {name: "choc covered pretzel slims", quantity: 60, unit: "g"};
+        var receiptItem2 = {name: "choc covered pretzel slims", quantity: 60, unit: "g"};
 
         receiptItems.push(receiptItem1);
-        // receiptItems.push(receiptItem2);
-        receiptItems.push(receiptItem3);
+        receiptItems.push(receiptItem2);
 
-        // console.log(">>> categoryTranslations", categoryManager._.categoryMappings);
         inventoryManager.addToInventory(receiptItems);
-        // console.log(">>> translations", inventoryManager._.receiptItemTranslations);
-        // console.log(">>> categoryTranslations", categoryManager._.categoryMappings);
 
-        // modify quantities with conversions
-        // add another parameter for std grocery item? to check if there are units
         var inventoryContents = [new StandardGroceryItem("spaghetti sauce", 0.509, "miscellaneous"), 
           new StandardGroceryItem("chocolate pretzels", 0.075, "snacks")];
-          // new StandardGroceryItem("pear", __, "produce")];
 
         assert.deepStrictEqual(categoryManager._.categoryMappings["spaghetti sauce"], "miscellaneous");
         assert.deepStrictEqual(categoryManager._.categoryMappings["chocolate pretzels"], "snacks");
