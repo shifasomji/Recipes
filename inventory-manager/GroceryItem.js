@@ -7,7 +7,7 @@ var categoryManager = require('./CategoryManager');
  */
 
 class GroceryItem {
-    static solidUnits = ['kg', 'g', 'lb', 'oz', ''] // remove empty string?
+    static solidUnits = ['kg', 'g', 'lb', 'oz'] 
 
     static liquidUnits = ['l', 'ml', 'fl oz', 'qt', 'gal']
 

@@ -2,7 +2,8 @@ var StandardGroceryItem = require("./StandardGroceryItem");
 
 /**
  * The Unit Converter assists the Inventory Manager by converting GroceryItems to
- * StandardGroceryItems. 
+ * StandardGroceryItems (specifically, raw units to standard units).
+ * It also converts standard units back to raw units. 
  */
 class UnitConverter { 
  
@@ -79,7 +80,7 @@ class UnitConverter {
      * Converts a solid grocery from std unit (kg) to specified unit via a division
      * factor lookup in the solidConversions array.
      * 
-     * @param {*} quantity 
+     * @param {Number} quantity 
      * @param {String} unit 
      * @returns 
      */
@@ -97,7 +98,7 @@ class UnitConverter {
      * Converts a liquid grocery from std unit (L) to specified unit via a division
      * factor lookup in the liquidConversions array.
      * 
-     * @param {*} quantity 
+     * @param {Number} quantity 
      * @param {String} unit 
      * @returns 
      */

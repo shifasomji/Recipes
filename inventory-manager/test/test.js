@@ -122,12 +122,16 @@ describe("Test: Inventory-Manager", function() {
 
         var receiptItem1 = {"name":"Oatmeal Instant Maple Brn Sgr", "quantity":1, "unit":"none"}; 
         var receiptItem2 = {"name":"Tofu Baked Org Teriyaki", "quantity":2, "unit":"lb"};
+        var receiptItem3 = {"name":"homogenized milk - quart", "quantity":2, "unit":""};
         
         receiptItems.push(receiptItem1);
         receiptItems.push(receiptItem2);
+        receiptItems.push(receiptItem3);
 
         unrecognizedItems.push(receiptItem1);
         unrecognizedItems.push(receiptItem2);
+        unrecognizedItems.push(receiptItem3);
+
         assert.deepStrictEqual(inventoryManager.filterUnknownReceiptItem(receiptItems), unrecognizedItems);
       })
 
@@ -137,9 +141,11 @@ describe("Test: Inventory-Manager", function() {
 
         var receiptItem1 = {"name":"targe eggs", "quantity":7, "unit":"none"}; 
         var receiptItem2 = {"name":"peanut butter creamy no stir", "qty":7, "unit":"oz"};
+        var receiptItem3 = {"name":"homogenized milk - quart", "quantity":2, "unit":"qt"};
         
         receiptItems.push(receiptItem1);
         receiptItems.push(receiptItem2);
+        receiptItems.push(receiptItem3);
 
         assert.deepStrictEqual(inventoryManager.filterUnknownReceiptItem(receiptItems), unrecognizedItems);
       })
@@ -148,7 +154,7 @@ describe("Test: Inventory-Manager", function() {
         var receiptItems = [];
         var unrecognizedItems = [];
   
-        var receiptItem1 = {"name":"targe eggs", "quantity":7, "unit":"none"}; 
+        var receiptItem1 = {"name":"targe eggs", "quantity":7, "unit":"lb"}; 
         var receiptItem2 = {"name":"Trader Joe's Baby Spinach", "quantity":7, "unit":"oz"};
         
         receiptItems.push(receiptItem1);
