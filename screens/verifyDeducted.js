@@ -13,8 +13,6 @@ const verifyIngredients = (recipeIngredients, navigation) => {
         - this information will be provided by spoonacular api
         - it will be of the form [[name, quantity, unit], [name, quantity, unit]]
 
-        TO DO: ask lucky to send units of each ingredient
-
         create verifiedIngredients (return variable), which is equal to recipeIngredients
         user will then be able to update quantities of any items
         if user makes any changes to quantities:
@@ -75,13 +73,13 @@ const verifyDeducted = ({ name, quantity, unit }) => {
 
     const [name, onChangeName] = useState(null);
     const [quantity, onChangeQuantity] = useState(null);
-    const [unit] = useState(null);
+    const [unit, onChangeUnit] = useState(null);
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>
-                "Please verify the name and quantity of the ingredients consumed from your recipe.
-                If you did not use a certain ingredient in your recipe, mark the quantity as -1."
+                Please verify the name and quantity of the ingredients consumed from your recipe.
+                If you did not use a certain ingredient in your recipe, mark the quantity as -1.
             </Text>
 
             <TextInput
@@ -98,14 +96,16 @@ const verifyDeducted = ({ name, quantity, unit }) => {
                 keyboardType="default"
             />
 
-            {/* figure out correct syntax */ }
-            <Text>
-                "Unit of Ingredient", unit 
-            </Text>
+            <TextInput
+                onChangeText={onChangeUnit}
+                value={unit}
+                placeholder="Unit of Ingredient"
+                keyboardType="default"
+            />
 
             <Button
                 title="Done"
-                onPress={() => verifyIngredientsHelper(onChangeName, onChangeQuantity)}
+                onPress={() => verifyIngredientsHelper(onChangeName, onChangeQuantity, onChangeUnit)}
             />
 
         </View>
