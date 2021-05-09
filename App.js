@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import SwitchNavigator from "./navigation/switchNavigation";
-import Navigation from "./navigation/navigation";
+// import SwitchNavigator from "./navigation/switchNavigation";
+import Navigation from "./navigation/Navigation";
 
 export default class App extends React.Component {
   render() {

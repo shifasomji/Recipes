@@ -1,0 +1,50 @@
+Phase 4 Revisions: 
+
+1. Deleted FoodStateManager.js. Each GroceryItem object still has a 'foodstate'
+attribute, but it is now determined by the unit rather than by a lookup list. 
+See GroceryItem.js. 
+  
+2. In addition to returning items with unrecognized names (names that do not map
+to user-translated names in the receiptItemTranslations array), filterUnknownReceiptItem() 
+also returns items with no units (unit == ''). All unknown items are sent to the U/I
+to receive verification (user will verify name, quantity, unit and category).
+ 
+3. CategoryManager.js -- specifically, lookUpCategory() -- no longer assigns a category
+to each receiptItem using pre-determined item to category mappings. The categoryMappings()
+array now begins empty, and it becomes populated with mappings when InventoryManager.js's
+addToInventory() is called on unrecognized items (it relies on user-selected categories).
+ 
+4. All inventory items have quantity precision to the thousandths place. 
+
+5. getItemQuantity() now returns the inventory quantity of the item with the given name
+in the unit that is requested (rather than just in standard units). For this reason,
+it takes two arguments instead of one. The deconvertSolidUnit() and deconvertLiquidUnit()
+methods have been added to UnitConverter.js to assist with this functionality (now, we
+can convert from standard units to raw units, whereas before, we could only do the reverse).
+These changes enable UserInteractive to execute error handling during the autodeduction
+process (i.e., compare the inventory item quantity to recipe item quantity in the 
+units of the recipe item).
+  
+
+Phase 3 Revisions:
+ 
+1. The user's ingredients inventory is now implemented and maintained via
+ReactNative local storage (key-value pairs).
+https://www.robinwieruch.de/local-storage-react#local-storage-in-react
+InventoryManager is no longer a client-server model, so MongoDB / Mongo 
+shell scripting and the API layer specs have been eliminated. 
+ 
+2. Interactions between the U/I and updates for unknown receipt items have
+been clarified in the pseudocode for addToInventory(). 
+ 
+3. InventoryManager now only interacts with the U/I component (does not receive
+or return information to ReceiptScanner or RecipeGenerator). 
+
+Additional notes:
+ 
+Regarding the first issue raised in my review report: I will still be creating 
+the categories array in CategoryManager and the foodStates array in FoodStateManager
+via manual inputting for the 1.0 release. I agree that automation is important;
+however, it is not a priority and in my research, I have not been able to find
+open-source databases of mappings from ingredient to ingredient category or 
+ingredient to ingredient state that fit our needs.

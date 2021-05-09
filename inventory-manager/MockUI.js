@@ -26,13 +26,8 @@ class MockUI {
             quantity = 75;
             unit = "g";
             category = "snacks";
-        } else if (receiptItem.name.toLowerCase() == "a-pear each bartlett") {
-            name = "pear";
-            quantity = 3;
-            unit = "none";  // MAY NEED TO CHANGE OTHER CODE
-            category = "produce";
-        }
-
+        } 
+        
         var verifiedItem = {name: name, quantity: quantity, unit: unit, category: category};
         return verifiedItem;
     }
