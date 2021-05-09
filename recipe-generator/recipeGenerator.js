@@ -60,7 +60,7 @@ class RecipeGenerator {
         diet: this.diet,
       },
       headers: {
-        'x-rapidapi-key': '621409563cmshab64d51a4e7a120p11b940jsn5305e86310da',
+        'x-rapidapi-key': 'API-KEY',
         'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
       }
     };
@@ -127,7 +127,7 @@ class RecipeGenerator {
       method: 'GET',
       url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${this.recipeID}/information`,
       headers: {
-        'x-rapidapi-key': '621409563cmshab64d51a4e7a120p11b940jsn5305e86310da',
+        'x-rapidapi-key': 'API-KEY',
         'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
       }
     };
