@@ -56,8 +56,7 @@ class PreferenceObject {
       this.setDiet();
       this.setExcludeIngredients();
     } catch (err) {
-      this.errorBool = true;
-      this.errorMessage = "Something went wrong, please select your preferences again.";
+      throw new Error("Bad input");
     }
   }
 

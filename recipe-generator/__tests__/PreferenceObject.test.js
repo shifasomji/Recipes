@@ -30,4 +30,15 @@ describe("PreferenceObject Unit Testing:", () => {
     expect(pref.includeIngredients).toEqual('tomato, potato');
     expect(pref.intolerances).toEqual('tree nut, dairy, shellfish');
   });
+  test("Test3: Messed up input in wrong format. Should throw an error", () => {
+    const input = [[1], [2], [3], [4]];
+    const start = () => {
+      try {
+        var pref = new PreferenceObject(input);
+      } catch (err) {
+        expect(err).toBeInstanceOf(Error);
+      }
+    }
+    start();
+  });
 });

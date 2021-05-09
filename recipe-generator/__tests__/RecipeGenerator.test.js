@@ -25,63 +25,59 @@ describe("RecipeGenerator.js Unit Testing: ", () => {
 
   // PASSED
 
-  // test("Test2A: Search Recipes Complex API call, () => {
-  //   /**
-  //    * Uncomment after finishing
-  //    */
-  //   // var listJson;
-  //   // var recipes;
-  //   // var start = async function () {
-  //   //   const query = new RecipeGenerator(input);
-  //   //   await query.initialize();
+  test("Test2A: Search Recipes Complex API call", () => {
 
-  //   //   listJson = query.getRecipesList();
-  //   //   recipes = populateRecipes();
-  //   // }
+    var listJson;
+    var recipes;
+    var start = async function () {
+      const query = new RecipeGenerator(input);
+      await query.initialize();
 
-  //   // start();
+      listJson = query.getRecipesList();
+      recipes = populateRecipes();
+      expect(listJson instanceof Object).toEqual(true);
+      expect(listJson.hasOwnProperty('results')).toEqual(true); // checks that the requested file is in fact from Search Recipes Complex call
 
-  //   // DELETE after passed
-  //   const listJson = require('../Mocks/test1.json');
-  //   //
+      expect(recipes instanceof Array).toEqual(true);
 
-  //   expect(listJson instanceof Object).toEqual(true);
-  //   expect(listJson.hasOwnProperty('results')).toEqual(true); // checks that the requested file is in fact from Search Recipes Complex call
+      const recipe = recipes[0];
+      expect(recipe instanceof RecipeListItem);
+      expect(typeof recipe.id).toEqual("number");
+      expect(typeof recipe.title).toEqual("string");
+      expect(typeof recipe.missedCount).toEqual("number");
+      expect(typeof recipe.usedCount).toEqual("number");
+      expect(typeof recipe.image).toEqual("string");
+      expect(typeof recipe.imageType).toEqual("string");
+    }
 
-  //   expect(recipes instanceof Array).toEqual(true);
-
-  //   const recipe = recipes[0];
-  //   expect(recipe instanceof RecipeListItem);
-  //   expect(typeof recipe.id).toEqual("number");
-  //   expect(typeof recipe.title).toEqual("string");
-  //   expect(typeof recipe.missedCount).toEqual("number");
-  //   expect(typeof recipe.usedCount).toEqual("number");
-  //   expect(typeof recipe.image).toEqual("string");
-  //   expect(typeof recipe.imageType).toEqual("string");
-  // })
+    start();
+  });
 
 
   // PASSED
 
-  // test("Test2B: generating recipes throws an error", () => {
-  //   const badInput = [["unicorn"], [""], [""], [""]];
-  //   const start = async function () {
-  //     try {
-  //       const query = new RecipeGenerator(badInput);
-  //       await query.initialize();
+  test("Test2B: generating recipes throws an error", () => {
+    const badInput = [["unicorn"], [""], [""], [""]];
+    const start = async function () {
+      try {
+        const query = new RecipeGenerator(badInput);
+        await query.initialize();
 
-  //       console.log(query.getResults());
-  //       console.log(query.getRecipesList());
-  //       console.log(query.populateRecipes());
-  //     } catch (err) {
-  //       console.log("Could not populate recipes because there are no recipes to populate with.");
-  //       expect(err).toBeInstanceOf(Error);
-  //       expect(err).toHaveProperty("No results generated please search for something else");
-  //     }
-  //   }
+        console.log(query.getResults());
+        console.log(query.getRecipesList());
+        console.log(query.populateRecipes());
+      } catch (err) {
+        console.log("Could not populate recipes because there are no recipes to populate with.");
+        expect(err).toBeInstanceOf(Error);
+        expect(err).toHaveProperty("No results generated please search for something else");
+      }
+    }
 
-  //   start();
-  // })
+    start();
+  })
+
+  // PASSED
+
   test("Test 3A: Get Recipe Information: ", () => {
     var recipeJson;
     var uiRecipe;
@@ -96,10 +92,21 @@ describe("RecipeGenerator.js Unit Testing: ", () => {
 
       recipeJson = query.getRecipeContent();
       uiRecipe = query.getUiRecipe();
+      expect(recipeJson.hasOwnProperty('extendedIngredients')).toEqual(true); // checks that the requested file is in fact from Get Recipe Information API call
+
+      expect(uiRecipe instanceof RecipeListItem);
+      expect(typeof uiRecipe.title).toEqual("string");
+      expect(typeof uiRecipe.recippeId).toEqual("number");
+      expect(typeof uiRecipe.vegetarian).toEqual("boolean");
+      expect(typeof uiRecipe.vegan).toEqual("boolean");
+      expect(typeof uiRecipe.glutenFree).toEqual("boolean");
+      expect(typeof uiRecipe.dairyFree).toEqual("boolean");
+      expect(typeof uiRecipe.image).toEqual("string");
+      expect(typeof uiRecipe.instruction).toEqual("string");
+      expect(typeof uiRecipe.instruction).toEqual("string");
+      expect(uiRecipe.ingrediets instanceof Array).toEqual(true);
     }
 
     start();
-    expect(recipeJson.hasOwnProperty('extendedIngredients')).toEqual(true); // checks that the requested file is in fact from Get Recipe Information API call
-
   })
 });
