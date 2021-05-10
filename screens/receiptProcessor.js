@@ -55,6 +55,7 @@ const updateInventory = () => {
 
             <TextInput
                 onChangeText={onChangeName}
+                testID="change name"
                 value={name}
                 placeholder="Name of Ingredient"
                 keyboardType="default"
@@ -62,26 +63,35 @@ const updateInventory = () => {
 
             <TextInput
                 onChangeText={onChangeQuantity}
+                testID="change quantity"
                 value={quantity}
                 placeholder="Quantity of Ingredient"
                 keyboardType="default"
             />
 
             { /* add units */ }
-            <Text>
+            <Text testID="set unit">
                 {unit ?
                   `Select the unit of this ingredient` :
-                    "Please select a unit"
+                    "Please select a unit" 
                 }
             </Text>
             <RNPickerSelect
                 onValueChange={(unit) => setUnit(unit)}
                 items={[
-                  
+                    { label: 'kg', value: 'kg' },
+                    { label: 'g', value: 'g' },	
+                    { label: 'lb', value: 'lb' },
+                    { label: 'oz', value: 'oz' },
+                    { label: 'l', value: 'l' },
+                    { label: 'ml', value: 'ml' },	
+                    { label: 'fl oz', value: 'fl oz' },
+                    { label: 'qt', value: 'qt' },
+                    { label: 'gal', value: 'gal'}
                 ]}
             />
 
-            <Text>
+            <Text testID="set category">
                 {category ?
                   `Select the category of this ingredient` :
                     "Please select a category"
@@ -102,6 +112,7 @@ const updateInventory = () => {
 
             <Button
                 title="Done"
+                testID="done"
                 onPress={() => translateItemHelper(onChangeName, onChangeQuantity, unit, category)}
             />
 
