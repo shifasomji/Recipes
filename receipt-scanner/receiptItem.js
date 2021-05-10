@@ -1,13 +1,7 @@
 /*
-<<<<<<< HEAD
 This new class will act like a data container for processed receipt
 data and will create items with properties:
 Description, Quantity, and Units
-=======
-This new class will act like a data container for processed receipt item
-and will create items with properties:
-Description, Quantity, and Units 
->>>>>>> 12634d531be9bff32d74be7dabaaefaaedaf63c8
 */
 class thereceiptItem {
 
