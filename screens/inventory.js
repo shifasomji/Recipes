@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { StyleSheet, View, Alert, Button } from 'react-native';
-// import { inventoryManager } from ""; // put path to stephanie's component
+//import { inventoryManager } from "../inventory-manager/InventoryManager"; 
 // returns list of objects, each of which has name, quantity, category
 
 import {
@@ -16,7 +16,7 @@ export default class Inventory extends React.Component {
         <Button
           title="Show Inventory"
           testID="show inventory"
-          onPress={() => Alert.alert('Show inventory')}
+          onPress={}
           color={APPINPUTVIEW}
         />
       </View>

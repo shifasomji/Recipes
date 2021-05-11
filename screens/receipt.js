@@ -3,11 +3,12 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker'
-import { ReceiptProcessor } from "./ReceiptProcessor";
+// import { ReceiptProcessor } from "./ReceiptProcessor";
 
 import {
   APPINPUTVIEW
 } from "../style/constants";
+import { Alert } from 'react-native';
 
 export default class App extends React.Component {
 
@@ -46,7 +47,7 @@ export default class App extends React.Component {
           <Button 
             title="Verify Ingredients from Receipt" 
             testID="verify receipt"
-            onPress={() => ReceiptProcessor}
+            onPress={() => Alert.alert("hello")}
             color={APPINPUTVIEW} />
         </View>
       </View>
