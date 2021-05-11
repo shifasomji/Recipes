@@ -9,7 +9,7 @@ import SignupScreen from "../screens/Signup";
 import ReceiptScreen from "../screens/Receipt";
 import RecipeScreen from "../screens/Recipe";
 import VerifyDeducted from "../screens/VerifyDeducted";
-// import ReceiptProcessor from "../screens/ReceiptProcessor";
+import ReceiptProcessor from "../screens/ReceiptProcessor";
 
 beforeAll(() => {
     jest.spyOn(console, 'log').mockImplementation(jest.fn());
@@ -179,7 +179,6 @@ test('Verify Deducted Screen has a "done" button that records all user changes',
   expect(foundSelect).toBeTruthy();
 });
 
-/*
 test('Receipt Processor Screen renders correctly', () => {
   const tree = renderer.create(<ReceiptProcessor />).toJSON();
   expect(tree).toBeTruthy();
@@ -219,7 +218,7 @@ test('Receipt Processor Screen has a "done" button that records all user changes
   const foundSelect = getByTestId(testIdName);
   expect(foundSelect).toBeTruthy();
 });
-*/
+
 
 
 
