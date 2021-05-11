@@ -16,7 +16,7 @@ export default class Inventory extends React.Component {
         <Button
           title="Show Inventory"
           testID="show inventory"
-          onPress={}
+          onPress={Alert.alert("Inventory")}
           color={APPINPUTVIEW}
         />
       </View>
