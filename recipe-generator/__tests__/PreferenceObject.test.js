@@ -7,7 +7,6 @@ describe("PreferenceObject Unit Testing:", () => {
     expect(pref.limitLicense).toBe(false);
     expect(pref.offset).toEqual(0);
     expect(pref.number).toEqual(5);
-    expect(pref.errorBool).toEqual(false);
 
     expect(pref.diet).toEqual('');
     expect(pref.excludeIngredients).toEqual('');
