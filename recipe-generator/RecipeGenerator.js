@@ -8,11 +8,6 @@
  * UiRecipe is a data object storing information about a requested recipe. It stores an array of ingredients, and their corresponding image, amounts, and units.
  * 
  */
-// import { PreferenceObject } from './PreferenceObject.js';
-// import { RecipeList } from './RecipeList.js';
-// import { RecipeListItem } from './RecipeListItem.js';
-// import { UiRecipe } from './UiRecipe.js';
-// import { Ingredient } from './Ingredient.js';
 "use strict";
 const axios = require("axios");
 const PreferenceObject = require('./PreferenceObject.js');
@@ -85,8 +80,6 @@ class RecipeGenerator {
    * @returns results array from spoonaccular API recipes list
    */
   getResults() {
-    this.results = this.responseList.data.results;
-
     return this.responseList.data.results;
   }
 
@@ -105,8 +98,7 @@ class RecipeGenerator {
     for (let i = 0; i < results.length; i++) {
       res.push(new RecipeListItem(results[i]));
     }
-
-    this.recipes = res;
+    å
     return res;
   }
 
