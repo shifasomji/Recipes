@@ -35,8 +35,6 @@ class PreferenceObject {
     this.includeIngredients; // preferences data object at index 0
     this.excludeIngredients; // special dietary restrictions (ex: no pork, pork should be listed here)
     this.intolerances; // allergies (shifa needs to add this to the preferences object)
-    this.errorBool = false;
-    this.errorMessage;
     this.parse();
   }
 
