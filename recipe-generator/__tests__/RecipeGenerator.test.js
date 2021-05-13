@@ -67,7 +67,6 @@ describe("RecipeGenerator.js Unit Testing: ", () => {
         console.log(query.getRecipesList());
         console.log(query.populateRecipes());
       } catch (err) {
-        console.log("Could not populate recipes because there are no recipes to populate with.");
         expect(err).toBeInstanceOf(Error);
         expect(err).toHaveProperty("No results generated please search for something else");
       }
