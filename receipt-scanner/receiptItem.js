@@ -43,4 +43,4 @@ class thereceiptItem {
 
 }
 
-module.exports = thereceiptItem;
+export default thereceiptItem;

@@ -15,14 +15,13 @@
 // https://docs.expo.io/versions/latest/sdk/imagepicker/
 
 
+import React, {useState } from 'react';
+import {StyleSheet, Text, View, Modal, Alert} from 'react-native';
+import {TextInput, Button} from 'react-native-paper';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
+import receiptDataExtractor from '../receipt-scanner/receiptDataExtractor';
 
-
-
-// import React, {useState } from 'react';
-// import {StyleSheet, Text, View, Modal, Alert} from 'react-native';
-// import {TextInput, Button} from 'react-native-paper';
-//import * as ImagePicker from 'expo-image-picker';
-//import * as Permissions from 'expo-permissions';
 
 class receiptFileCollector  {
     uriFromCamPresent;
@@ -33,6 +32,7 @@ class receiptFileCollector  {
         this.uriFromCamPresent = false;
         this.uriFromGalleryPresent = false;
         this.theUri = "" //"./screens/IMG_4857.jpeg";
+        this.extractor = new receiptDataExtractor(this.theUri);
     }
     /**
      * This is an async method that launches the camera to allow a user to get a photo for a receipt 
@@ -50,8 +50,8 @@ class receiptFileCollector  {
             })
             if (!uploadProperties.cancelled) {
                 this.uriFromGalleryPresent = true;
-                this.theUri = data.uri;
-                console.log(this.theUri)
+                this.theUri = uploadProperties.uri;
+                this.extractor.theReceiptUri = this.theUri;
             }  else {
                 this.uriFromGalleryPresent= false;
                 Alert.alert("You cancelled this operation")
@@ -59,6 +59,8 @@ class receiptFileCollector  {
          }else {
             Alert.alert("You need to give permission to access gallery")
         }
+
+        console.log(this.extractor.makeVeryfiRequest());
     }
     /**
      * This is an async method that launches the gallery to allow a user to select a photo for a receipt
@@ -116,4 +118,4 @@ class receiptFileCollector  {
 
 }
 
-module.exports = receiptFileCollector;
+export default receiptFileCollector;

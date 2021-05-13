@@ -7,13 +7,9 @@
  * by our different component - the inventory manager 
  */
 
-
-receiptFileCollector = require( '../receipt-scanner/receiptFileCollector');
-fromcollector = new receiptFileCollector()
-thereceiptItem = require('../receipt-scanner/receiptItem')
+import thereceiptItem from "./receiptItem";
 const request = require("request");
-var fs = require("fs");
-
+var fs = require('react-native-fs');
 
 class receiptDataExtractor {
     theReceiptUri;
@@ -28,7 +24,7 @@ class receiptDataExtractor {
      */
 
     constructor (theUri) {   
-        this.theReceiptUri = theUri 
+        this.theReceiptUri = theUri; 
         this.categories = []
         this.extractedData = {}
         this.receiptItemList = []
@@ -75,7 +71,7 @@ class receiptDataExtractor {
         var imagePath = this.theReceiptUri;
 
         // create a bas64 encoded file object using the image for a parameter for veryfi 
-        var base64str = fs.readFileSync(imagePath, 'base64');
+        var base64str = fs.readFile(imagePath, base64str);
 
         // set fileName to the receipt uri, ideally we could have a method to condense a long receiptUri
         var fileName = this.theReceiptUri //"IMG_4857.jpeg";
@@ -170,4 +166,4 @@ class receiptDataExtractor {
     }
 
 }
-module.exports = receiptDataExtractor;
+export default receiptDataExtractor;
