@@ -11,7 +11,13 @@ class CategoryManager {
      * <GroceryItem.name> : <Category>
      */
 
-    static categoryMappings = {};
+    static categoryMappings = {'broccoli': 'produce',
+      'bell pepper': 'produce',
+      'tomato': 'produce',
+      'potato': 'produce',
+      'banana': 'produce',
+      'onion': 'produce',
+      'bread': 'grains'};
     
 
     /**
