@@ -196,7 +196,16 @@ class InventoryManager {
      * release, conflicting translations will not be anticipated/handled,
      * and thus store name will not be a recorded property. 
      */
-    static receiptItemTranslations = {};
+    static receiptItemTranslations = {'broccoli slaw': 'broccoli',
+      'organic green lg bell pepp':'bell pepper',
+      'org hothouse tomato': 'tomato',
+      'org orange bell pepp': 'bell pepper', 
+      'org ylw bell peppers': 'bell pepper',
+      'russes potatoes': 'potato',
+      'yellow bananas': 'banana',
+      'yellow onions': 'onion',
+      'kaiser rolls': 'bread'
+   };
 
     /**
      * Determines which raw receipt items (from UserInteractive) need to be 
