@@ -78,7 +78,7 @@
     ]
   },
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "name": "Recipes",
   "description": "Repository for CS 181AA Project",
   "version": "1.0.0",

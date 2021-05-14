@@ -6,11 +6,11 @@
  * The methods in this class will create a list of receiptItems which will be accessed
  * by our different component - the inventory manager 
  */
- var receiptFileCollector = require('../receipt-scanner/receiptFileCollector');
- var receiptItem = require('../receipt-scanner/receiptItem')
- var fromcollector = new receiptFileCollector()
- const request = require("request");
- var fs = require("fs");
+var receiptFileCollector = require('../receipt-scanner/receiptFileCollector');
+var receiptItem = require('../receipt-scanner/receiptItem')
+var fromcollector = new receiptFileCollector()
+const request = require("request");
+var fs = require("fs");
 
 class receiptDataExtractor {
     theReceiptUri;
@@ -24,8 +24,8 @@ class receiptDataExtractor {
      * 
      */
 
-    constructor (theUri) {   
-        this.theReceiptUri = theUri; 
+    constructor(theUri) {
+        this.theReceiptUri = theUri;
         this.categories = []
         this.extractedData = {}
         this.receiptItemList = []
@@ -43,34 +43,33 @@ class receiptDataExtractor {
     async doRequest(options) {
 
         return new Promise(function (resolve, reject) {
-            console.log("we are here1")
-        try {
-          request(options, function (error, res, body) {
-            console.log("we are here2", res.statusCode)
-            if (!error && ((res.statusCode == 200) ||(res.statusCode == 201) || (res.statusCode == 202))) {
-                console.log("we are here3")
-              resolve(body);
-            } else  {
-              reject(error);
+            try {
+                request(options, function (error, res, body) {
+
+                    if (!error && ((res.statusCode == 200) || (res.statusCode == 201) || (res.statusCode == 202))) {
+
+                        resolve(body);
+                    } else {
+                        reject(error);
+                    }
+                });
             }
-          });
-        }
-        catch (e) {
-            console.log("unable to submit the file, try again")
-        }
+            catch (e) {
+                console.log("unable to submit the file, try again")
+            }
         });
 
-      }
-      /**
-       * This an async method that sets all the needed parameters for verify API in options and calls doRequest to make  
-       * a POST request and wait until the receipt is processed
-       */
+    }
+    /**
+     * This an async method that sets all the needed parameters for verify API in options and calls doRequest to make  
+     * a POST request and wait until the receipt is processed
+     */
 
-    async makeVeryfiRequest()  {
+    async makeVeryfiRequest() {
         // this is a list parameter for veryfi to help categorize items in the receipt
         this.categories = ["food", "alcohol", "fees", "toiletries", "miscelenous"]
         var imagePath = this.theReceiptUri;
-    
+
         // create a bas64 encoded file object using the image for a parameter for veryfi 
         var base64str = fs.readFileSync(imagePath, 'base64');
 
@@ -86,7 +85,7 @@ class receiptDataExtractor {
         var USER_NAME = "kennnethcrystal";
         var API_KEY = "c4c919165b22663ba28d945e39091b34";
         var CLIENT_ID = "vrfwIHukZL0nUZb8UBLNuGaVLlNO5vZsPxXn9Kw";
-        var ENVIRONMENT_URL =  "api.veryfi.com";
+        var ENVIRONMENT_URL = "api.veryfi.com";
 
         var options = {
             method: "POST",
@@ -96,13 +95,12 @@ class receiptDataExtractor {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
                 "CLIENT-ID": CLIENT_ID,
-                "AUTHORIZATION": `apikey ${USER_NAME}:${API_KEY}` 
+                "AUTHORIZATION": `apikey ${USER_NAME}:${API_KEY}`
             },
             json: jsonData
         };
         // call doReqeust and set it to the extractedData variable
         this.extractedData = await this.doRequest(options);
-        console.log("the data", this.extractedData)
     }
 
 
@@ -111,7 +109,7 @@ class receiptDataExtractor {
      * @returns the json extracted data
      */
 
-   getExtractedData() {
+    getExtractedData() {
         return this.extractedData
     }
 
@@ -125,43 +123,43 @@ class receiptDataExtractor {
      * @returns a list of receiptItems that qualify with a category tag of e.g food, bevearages, produce, e.t.c
      */
 
-    
+
     createReceiptItemList(theData) {
         var lineItems = [];
         lineItems = theData.line_items;
 
-        for (var i = 0; i < lineItems.length; i++ ) {
+        for (var i = 0; i < lineItems.length; i++) {
             // check if the item tag is not a charge/fee, alcohol/beer, toiletries, and other miscelenous
             if (lineItems[i].type != "fee" && lineItems[i].type != "alcohol" && lineItems[i].type != "toiletries"
-            && lineItems[i].type != "miscelenous") {
+                && lineItems[i].type != "miscelenous") {
 
-                var item = new thereceiptItem();
+                var item = new receiptItem();
                 var desc = lineItems[i].description;
                 var quant = lineItems[i].quantity;
-                var units = lineItems[i].unit_of_measure ;
+                var units = lineItems[i].unit_of_measure;
                 if (desc != null) {
                     item.setDescription(desc.toLowerCase());
-                    }
+                }
                 else {
                     item.setDescription("");
-                    }
+                }
 
                 if (quant != null) {
                     item.setQuantity(quant);
-                    }
+                }
                 else {
                     item.setQuantity("");
-                    }
+                }
 
                 if (units != null) {
                     item.setUnits(units.toLowerCase());
-                    }
+                }
                 else {
                     item.setUnits("");
-                    }
+                }
                 this.receiptItemList.push(item);
             }
-    }
+        }
 
         return this.receiptItemList
     }

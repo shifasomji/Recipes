@@ -5,74 +5,67 @@
 // import * as Permissions from 'expo-permissions';
 // import react from 'react';
 
-class thereceiptFileCollector  {
-
-    uriFromCamPresent;
-
-    uriFromGalleryPresent;
-
-    theUri;
-
-    constructor () {
+class thereceiptFileCollector {
+    constructor() {
         this.uriFromCamPresent = false;
         this.uriFromGalleryPresent = false;
-        this.theUri = "./receipt-scanner/IMG_4857.jpeg"
+        this.theUri = "";
     }
 
     getFileUri() {
-        return this.theUri
+        return this.theUri;
     }
 
     uriFromCamIsPresent() {
-        return this.uriFromCamPresent
+        return this.uriFromCamPresent;
     }
 
     uriFromGalleryIsPresent() {
-        return this.uriFromGalleryPresent
+        return this.uriFromGalleryPresent;
     }
 
-   pickFromGallery = async () => {
-        const granted = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+    pickFromGallery = async () => {
+        const granted = await Permissions.askAsync(Permissions.CAMERA_ROLL);
         if (granted) {
-           let uploadProperties =  await ImagePicker.launchImageLibraryAsync({
-                mediaTypes:ImagePicker.MediaTypeOptions.Images,
-                allowsEditing:true,
+            let uploadProperties = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                allowsEditing: true,
                 aspect: [1, 1],
                 quality: 1
-            })
+            });
             if (!uploadProperties.cancelled) {
                 this.uriFromGalleryPresent = true;
                 this.theUri = data.uri;
                 console.log(this.theUri)
-            }     
-         }else {
-            Alert.alert("You need to give permission to access gallery")
+            }
+        } else {
+            Alert.alert("You need to give permission to access gallery");
         }
     }
 
     pickFromCamera = async () => {
-            const granted = await Permissions.askAsync(Permissions.CAMERA)
-            if (granted) {
-               let uploadProperties =  await ImagePicker.launchCameraAsync({
-                    mediaTypes:ImagePicker.MediaTypeOptions.Images,
-                    allowsEditing:true,
-                    aspect: [1, 1],
-                    quality: 1
-    
-                })
-                if (!uploadProperties.cancelled) {
-                    this.uriFromCamPresent = true;
-                    this.theUri = data.uri;
-                    console.log(this.theUri)
-                } 
-                else {
-                    this.uriFromCamPresent = false;
-                }
-    
-             }else {
-                Alert.alert("You need to give permission to access camera")
+        const granted = await Permissions.askAsync(Permissions.CAMERA)
+        if (granted) {
+            let uploadProperties = await ImagePicker.launchCameraAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                allowsEditing: true,
+                aspect: [1, 1],
+                quality: 1
+
+            })
+            if (!uploadProperties.cancelled) {
+                this.uriFromCamPresent = true;
+                this.theUri = data.uri;
+                console.log(this.theUri)
             }
+            else {
+                this.uriFromCamPresent = false;
+            }
+
+        } else {
+            Alert.alert("You need to give permission to access camera")
         }
+    }
 
 }
 
