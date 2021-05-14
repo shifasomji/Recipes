@@ -1,46 +1,46 @@
 /*
 This new class will act like a data container for processed receipt
 data and will create items with properties:
-Description, Quantity, and Units
+Description, Quantity, and Units 
 */
 class thereceiptItem {
 
-    description;
-    quantity;
-    units;
+  description;
+  quantity;
+  units;
 
-  constructor() {
-    this.description = ""
-    this.quantity = ""
-    this.units = ""
-  }
+constructor() {
+  this.description = ""
+  this.quantity = ""
+  this.units = ""
+}
 
-  setDescription(desc) {
-  this.description = desc;
-  }
-
-
-  setQuantity(quant) {
-  this.quantity = quant;
-  }
-
-  setUnits(inputunits) {
-  this.units = inputunits;
-  }
-
-  getItemDescription()  {
-  return description;
-  }
+setDescription(desc) {
+this.description = desc;
+}
 
 
-  getItemQuantity() {
-  return quantity;
-  }
+setQuantity(quant) {
+this.quantity = quant;
+}
 
-  getItemUnits() {
-  return units;
-  }
+setUnits(inputunits) {
+this.units = inputunits;
+}
+
+getItemDescription()  {
+return this.description;
+}
+
+
+getItemQuantity() {
+return this.quantity;
+}
+
+getItemUnits() {
+return this.units;
+}
 
 }
 
-export default thereceiptItem;
+module.exports = thereceiptItem;

@@ -6,10 +6,11 @@
  * The methods in this class will create a list of receiptItems which will be accessed
  * by our different component - the inventory manager 
  */
-
-import thereceiptItem from "./receiptItem";
-const request = require("request");
-var fs = require('react-native-fs');
+ var receiptFileCollector = require('../receipt-scanner/receiptFileCollector');
+ var receiptItem = require('../receipt-scanner/receiptItem')
+ var fromcollector = new receiptFileCollector()
+ const request = require("request");
+ var fs = require("fs");
 
 class receiptDataExtractor {
     theReceiptUri;
@@ -69,9 +70,9 @@ class receiptDataExtractor {
         // this is a list parameter for veryfi to help categorize items in the receipt
         this.categories = ["food", "alcohol", "fees", "toiletries", "miscelenous"]
         var imagePath = this.theReceiptUri;
-
+    
         // create a bas64 encoded file object using the image for a parameter for veryfi 
-        var base64str = fs.readFile(imagePath, base64str);
+        var base64str = fs.readFileSync(imagePath, 'base64');
 
         // set fileName to the receipt uri, ideally we could have a method to condense a long receiptUri
         var fileName = this.theReceiptUri //"IMG_4857.jpeg";
@@ -166,4 +167,4 @@ class receiptDataExtractor {
     }
 
 }
-export default receiptDataExtractor;
+module.exports = receiptDataExtractor;
