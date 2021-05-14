@@ -5,18 +5,14 @@ Description, Quantity, and Units
 */
 class receiptItem {
 
-  description;
-  quantity;
-  units;
-
   constructor() {
-    this.description = ""
+    this.name = ""
     this.quantity = ""
     this.units = ""
   }
 
   setDescription(desc) {
-    this.description = desc;
+    this.name = desc;
   }
 
 
@@ -29,7 +25,7 @@ class receiptItem {
   }
 
   getItemDescription() {
-    return this.description;
+    return this.name;
   }
 
 
