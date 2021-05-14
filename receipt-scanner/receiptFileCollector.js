@@ -5,11 +5,13 @@
 // import * as Permissions from 'expo-permissions';
 // import react from 'react';
 
+const path = require('../receipt-scanner/IMG_4857.jpeg')
+
 class thereceiptFileCollector {
     constructor() {
         this.uriFromCamPresent = false;
         this.uriFromGalleryPresent = false;
-        this.theUri = "../receipt-scanner/IMG_4857.jpeg";
+        this.theUri = path;
     }
 
     getFileUri() {
