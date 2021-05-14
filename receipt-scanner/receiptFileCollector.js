@@ -9,7 +9,7 @@ class thereceiptFileCollector {
     constructor() {
         this.uriFromCamPresent = false;
         this.uriFromGalleryPresent = false;
-        this.theUri = "";
+        this.theUri = "../receipt-scanner/IMG_4857.jpeg";
     }
 
     getFileUri() {

@@ -8,13 +8,14 @@ const assert = require('chai').assert;
 testCollector = new thereceiptFileCollector();
 testReceiptItem = new thereceiptItem();
 
-
 // instantiate a test version for data extractor with receipt uri from testCollector
-testDataExtractor = new receiptDataExtractor(testCollector.getFileUri());
+testDataExtractor = new receiptDataExtractor("../receipt-scanner/IMG_4857.jpeg");
 
 // I create receiptItems from looking at a receipt and test them against the data extracted by veryfi
+
 describe ("testing data extracted by veryfi ", function() {
-      it("tests item values: description, quantity, units from receipt", async (done) => {
+  const start = async function () {
+      it("tests item values: description, quantity, units from receipt", async () => {
 
         testReceiptItemList = []
         await testDataExtractor.makeVeryfiRequest() 
@@ -84,9 +85,16 @@ describe ("testing data extracted by veryfi ", function() {
             assert.deepEqual(receiptItemListFromExtractor[i].getItemQuantity(), testReceiptItemList[i].getItemQuantity())
             assert.deepEqual( receiptItemListFromExtractor[i].getItemUnits(), testReceiptItemList[i].getItemUnits())
         }
-   
 
-      }).timeout(25000);  
-
+       
+        
+      }    
+      
+      
+      )
+    }
+    start() 
+     
 
 });
+
