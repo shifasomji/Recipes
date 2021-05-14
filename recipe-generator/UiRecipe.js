@@ -26,7 +26,12 @@ class UiRecipe {
   }
 
   /**
+   * iterate through the elements in the spoonacular get recipe information jsonfile
+   * Create an Ingredient data object by giving it an extendedIngredients element
+   * push that ingredient data object into the ingredients array.
    * 
+   * @param {None}
+   * @returns {None}
    */
   populateIngredients() {
     // iterate through the elements in the spoonacular recipe information jsonfile

@@ -53,6 +53,7 @@ const verifyIngredientsHelper = (verifiedName, verifiedQuantity, unit) => {
 
     var displayError = "";
 
+    // Display appropriate error
     if (!existsName) {
         displayError = "No ingredient of this name exists in your inventory";
     } else if (!correctQuantity) {

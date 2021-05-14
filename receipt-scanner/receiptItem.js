@@ -1,19 +1,13 @@
 /*
-<<<<<<< HEAD
 This new class will act like a data container for processed receipt
 data and will create items with properties:
-Description, Quantity, and Units
-=======
-This new class will act like a data container for processed receipt item
-and will create items with properties:
 Description, Quantity, and Units 
->>>>>>> 12634d531be9bff32d74be7dabaaefaaedaf63c8
 */
-class thereceiptItem {
+class receiptItem {
 
-    description;
-    quantity;
-    units;
+  description;
+  quantity;
+  units;
 
   constructor() {
     this.description = ""
@@ -22,31 +16,31 @@ class thereceiptItem {
   }
 
   setDescription(desc) {
-  this.description = desc;
+    this.description = desc;
   }
 
 
   setQuantity(quant) {
-  this.quantity = quant;
+    this.quantity = quant;
   }
 
   setUnits(inputunits) {
-  this.units = inputunits;
+    this.units = inputunits;
   }
 
-  getItemDescription()  {
-  return description;
+  getItemDescription() {
+    return this.description;
   }
 
 
   getItemQuantity() {
-  return quantity;
+    return this.quantity;
   }
 
   getItemUnits() {
-  return units;
+    return this.units;
   }
 
 }
 
-module.exports = thereceiptItem;
+module.exports = receiptItem;

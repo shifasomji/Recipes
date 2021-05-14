@@ -3,13 +3,19 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker'
-import { ReceiptProcessor } from "./ReceiptProcessor";
+import receiptFileCollector from "../receipt-scanner/receiptFileCollector";
 
 import {
   APPINPUTVIEW
 } from "../style/constants";
+import { Alert } from 'react-native';
 
 export default class App extends React.Component {
+
+  constructor(){
+    super()
+    this.receiptFile = new receiptFileCollector();
+  }
 
   state = {
     photo: null,
@@ -27,30 +33,21 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { photo } = this.state
     return (
       <View style={styles.container}>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          {photo && (
-            <Image
-              source={{ uri: photo.uri }}
-              style={{ width: 300, height: 300 }}
-            />
-          )}
+
           <Button 
             title="Upload Receipt from Gallery" 
-            testID="upload receipt"
-            onPress={this.handleChoosePhoto}
+            testID="upload receipt gallery"
+            onPress={() => this.receiptFile.pickFromGallery()}
             color={APPINPUTVIEW} />
 
           <Button 
             title="Verify Ingredients from Receipt" 
             testID="verify receipt"
-            onPress={() => ReceiptProcessor}
+            onPress={() => Alert.alert("hello")}
             color={APPINPUTVIEW} />
-        </View>
       </View>
-
       
     );
   }

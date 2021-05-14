@@ -1,14 +1,14 @@
 // This module handles all user interactions regarding receipts
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput } from 'react-native';
-import { inventoryManager } from ""; // put in path to stephanie's class
+//import { inventoryManager } from ""; // put in path to stephanie's class
 import RNPickerSelect from "react-native-picker-select";
 
 const verifyReceipt = (data) => {
     inventoryManager.addToInventory(data);
 }
 
-translateItem = (item) => {
+const translateItem = (item) => {
     /*
         ask the user to verify receipt ingredients from OCR
         input will look like ["targe eggs", "safew milk"] 
