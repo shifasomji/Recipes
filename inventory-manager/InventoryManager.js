@@ -151,10 +151,6 @@ class InventoryManager {
        return contents;
     }
 
-    clearInventory(){
-       localStorage.clear();
-    }
-
     /**
      * Determines whether an inventory item of name itemName exists in the inventory.
      * 
