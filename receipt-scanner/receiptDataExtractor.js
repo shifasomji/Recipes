@@ -68,7 +68,7 @@ class receiptDataExtractor {
     async makeVeryfiRequest() {
         // this is a list parameter for veryfi to help categorize items in the receipt
         this.categories = ["food", "alcohol", "fees", "toiletries", "miscelenous"]
-        var imagePath = this.theReceiptUri;
+        var imagePath = testDataExtractor.theReceiptUri;
 
         // create a bas64 encoded file object using the image for a parameter for veryfi 
         var base64str = fs.readFileSync(imagePath, 'base64');

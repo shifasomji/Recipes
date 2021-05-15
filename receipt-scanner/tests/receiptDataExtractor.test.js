@@ -1,23 +1,22 @@
 
-var thereceiptFileCollector = require('../receiptFileCollector');
+var receiptFileCollector = require('../receiptFileCollector');
 var receiptDataExtractor = require('../receiptDataExtractor')
-var thereceiptItem = require('../receiptItem');
-//receiptFileCollector = require('../receiptFileCollector');
+var receiptItem = require('../receiptItem');
+
 const assert = require('chai').assert;
 
-testCollector = new thereceiptFileCollector();
-testReceiptItem = new thereceiptItem();
+testCollector = new receiptFileCollector();
+testReceiptItem = new receiptItem();
 
-//const path = require('../receipt-scanner/IMG_4857.jpeg')
 
-// instantiate a test version for data extractor with receipt uri from testCollector
-testDataExtractor = new receiptDataExtractor(testCollector.getFileUri());
+
+// instantiate a test version for data extractor with receipt uri from testCollector (hardcoded in for now)
+testDataExtractor = new receiptDataExtractor("../tests/IMG_4857.jpeg");
 
 // I create receiptItems from looking at a receipt and test them against the data extracted by veryfi
 
 describe ("testing data extracted by veryfi ", function() {
 
-  const start = async function () {
       it("tests item values: description, quantity, units from receipt", async () => {
 
         testReceiptItemList = []
@@ -91,12 +90,7 @@ describe ("testing data extracted by veryfi ", function() {
 
        
         
-      });
-
-    }
-
-    start() 
-     
+      }).timeout(30000)
 
 });
 
